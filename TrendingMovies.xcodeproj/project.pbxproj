@@ -6,13 +6,32 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		04CE7A442F89D1CC00D8FDD3 /* MovieList in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7A432F89D1CC00D8FDD3 /* MovieList */; };
+		04CE7A462F89D1CF00D8FDD3 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7A452F89D1CF00D8FDD3 /* Core */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		04CE7A232F89C71500D8FDD3 /* TrendingMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendingMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		04CE7A322F89C7CF00D8FDD3 /* Exceptions for "TrendingMovies" folder in "TrendingMovies" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Core,
+				MovieList,
+			);
+			target = 04CE7A222F89C71500D8FDD3 /* TrendingMovies */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		04CE7A252F89C71500D8FDD3 /* TrendingMovies */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				04CE7A322F89C7CF00D8FDD3 /* Exceptions for "TrendingMovies" folder in "TrendingMovies" target */,
+			);
 			path = TrendingMovies;
 			sourceTree = "<group>";
 		};
@@ -23,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CE7A442F89D1CC00D8FDD3 /* MovieList in Frameworks */,
+				04CE7A462F89D1CF00D8FDD3 /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				04CE7A252F89C71500D8FDD3 /* TrendingMovies */,
+				04CE7A422F89D1CC00D8FDD3 /* Frameworks */,
 				04CE7A242F89C71500D8FDD3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +65,13 @@
 				04CE7A232F89C71500D8FDD3 /* TrendingMovies.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		04CE7A422F89D1CC00D8FDD3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -65,6 +94,8 @@
 			);
 			name = TrendingMovies;
 			packageProductDependencies = (
+				04CE7A432F89D1CC00D8FDD3 /* MovieList */,
+				04CE7A452F89D1CF00D8FDD3 /* Core */,
 			);
 			productName = TrendingMovies;
 			productReference = 04CE7A232F89C71500D8FDD3 /* TrendingMovies.app */;
@@ -258,6 +289,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -289,6 +321,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,6 +361,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04CE7A432F89D1CC00D8FDD3 /* MovieList */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieList;
+		};
+		04CE7A452F89D1CF00D8FDD3 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04CE7A1B2F89C71500D8FDD3 /* Project object */;
 }
