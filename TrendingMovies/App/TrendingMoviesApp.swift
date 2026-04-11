@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import MovieList
 
 @main
 struct TrendingMoviesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MovieListView()
         }
     }
 }
