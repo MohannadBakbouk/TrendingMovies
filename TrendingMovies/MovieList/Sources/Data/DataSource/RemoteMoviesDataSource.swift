@@ -12,7 +12,7 @@ struct RemoteMoviesDataSource: RemoteMoviesDataSourceProtocol {
         self.service = service
     }
     
-    func getMovies(page: Int, criteria: MovieListParams) async throws -> MoviesResponseDTO {
+    func getMovies(page: Int, criteria: MovieListParams? = nil) async throws -> MoviesResponseDTO {
         try await service.fetchMovies(page: page, criteria: criteria)
     }
     

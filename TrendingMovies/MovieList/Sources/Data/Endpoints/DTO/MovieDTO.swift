@@ -39,7 +39,8 @@ extension MovieDTO{
             title: title,
             description: overview,
             image: URL(string: "\(Constants.imagesUrl)\(posterPath ?? "")"),
-            year: releaseDate.toDate()?.yearString ?? Date.now.yearString
+            year: releaseDate.toDate()?.yearString ?? Date.now.yearString,
+            genreIds: genreIDS
         )
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import Core
 
 protocol MoviesServiceProtocol: Sendable {
-    func fetchMovies(page: Int, criteria: MovieListParams) async throws -> MoviesResponseDTO
+    func fetchMovies(page: Int, criteria: MovieListParams?) async throws -> MoviesResponseDTO
     func fetchGenres() async throws -> GenreResponseDTO
 }
 
@@ -21,13 +21,13 @@ struct MoviesService: MoviesServiceProtocol{
         self.networkManager = networkManager
     }
     
-    func fetchMovies(page: Int, criteria: MovieListParams) async throws -> MoviesResponseDTO {
-        let trimmed = criteria.searchQuery?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    func fetchMovies(page: Int, criteria: MovieListParams?) async throws -> MoviesResponseDTO {
+        let trimmed = criteria?.searchQuery?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let endpoint: MoviesEndpoint
         if !trimmed.isEmpty {
             endpoint = .searchMovie(query: trimmed, page: page)
         } else {
-            endpoint = .discover(page: page, genreId: criteria.genreId)
+            endpoint = .discover(page: page, genreId: criteria?.genreId)
         }
         return try await networkManager.request(endpoint: endpoint)
     }

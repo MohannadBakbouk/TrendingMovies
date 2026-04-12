@@ -13,4 +13,5 @@ struct Movie {
     let title, description: String
     let image: URL?
     let year: String
+    let genreIds: [Int]
 }

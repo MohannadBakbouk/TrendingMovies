@@ -6,6 +6,6 @@
 //
 
 protocol RemoteMoviesDataSourceProtocol: Sendable {
-    func getMovies(page: Int, criteria: MovieListParams) async throws -> MoviesResponseDTO
+    func getMovies(page: Int, criteria: MovieListParams?) async throws -> MoviesResponseDTO
     func getGenres() async throws -> GenreResponseDTO
 }

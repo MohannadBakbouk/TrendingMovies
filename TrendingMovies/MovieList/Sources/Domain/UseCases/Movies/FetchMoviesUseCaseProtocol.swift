@@ -6,5 +6,5 @@
 //
 
 protocol FetchMoviesUseCaseProtocol: Sendable {
-    func execute(page: Int, criteria: MovieListParams) async throws -> MoviesListPage
+    func execute(page: Int, criteria: MovieListParams?) async throws -> MoviesListPage
 }

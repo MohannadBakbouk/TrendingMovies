@@ -12,7 +12,7 @@ struct MoviesRepository: MoviesRepositoryProtocol {
         self.dataSource = dataSource
     }
     
-    func getMovies(page: Int, criteria: MovieListParams) async throws -> MoviesListPage {
+    func getMovies(page: Int, criteria: MovieListParams?) async throws -> MoviesListPage {
         let response = try await dataSource.getMovies(page: page, criteria: criteria)
         let movies = response.results.map { $0.toDomain() }
         return MoviesListPage(movies: movies, page: response.page, totalPages: response.totalPages)

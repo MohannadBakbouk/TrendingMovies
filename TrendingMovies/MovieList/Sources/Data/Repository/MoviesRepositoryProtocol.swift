@@ -7,6 +7,6 @@
 
 
 protocol MoviesRepositoryProtocol: Sendable {
-    func getMovies(page: Int, criteria: MovieListParams) async throws -> MoviesListPage
+    func getMovies(page: Int, criteria: MovieListParams?) async throws -> MoviesListPage
     func getGenres() async throws -> [Genre]
 }

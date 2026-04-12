@@ -15,7 +15,7 @@ struct FetchMoviesUseCase: FetchMoviesUseCaseProtocol {
         self.repository = repository
     }
 
-    func execute(page: Int, criteria: MovieListParams) async throws -> MoviesListPage {
+    func execute(page: Int, criteria: MovieListParams?) async throws -> MoviesListPage {
         try await repository.getMovies(page: page, criteria: criteria)
     }
 }
