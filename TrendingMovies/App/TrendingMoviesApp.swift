@@ -10,9 +10,11 @@ import MovieList
 
 @main
 struct TrendingMoviesApp: App {
+    private let dependencies = AppDependencies()
+
     var body: some Scene {
         WindowGroup {
-            MovieListView()
+            dependencies.rootView()
         }
     }
 }
