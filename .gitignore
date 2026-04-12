@@ -3,6 +3,8 @@
 */xcuserdata/*
 
 # Build generated files
+.build/
+**/.build/
 build/
 DerivedData/
 *.moved-aside

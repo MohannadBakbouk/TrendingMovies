@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04CE7A442F89D1CC00D8FDD3 /* MovieList in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7A432F89D1CC00D8FDD3 /* MovieList */; };
 		04CE7A462F89D1CF00D8FDD3 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7A452F89D1CF00D8FDD3 /* Core */; };
+		04CE7C522F8B085200D8FDD3 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7C512F8B085200D8FDD3 /* DesignSystem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Core,
+				DesignSystem,
 				MovieList,
 			);
 			target = 04CE7A222F89C71500D8FDD3 /* TrendingMovies */;
@@ -42,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CE7C522F8B085200D8FDD3 /* DesignSystem in Frameworks */,
 				04CE7A442F89D1CC00D8FDD3 /* MovieList in Frameworks */,
 				04CE7A462F89D1CF00D8FDD3 /* Core in Frameworks */,
 			);
@@ -96,6 +99,7 @@
 			packageProductDependencies = (
 				04CE7A432F89D1CC00D8FDD3 /* MovieList */,
 				04CE7A452F89D1CF00D8FDD3 /* Core */,
+				04CE7C512F8B085200D8FDD3 /* DesignSystem */,
 			);
 			productName = TrendingMovies;
 			productReference = 04CE7A232F89C71500D8FDD3 /* TrendingMovies.app */;
@@ -370,6 +374,10 @@
 		04CE7A452F89D1CF00D8FDD3 /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Core;
+		};
+		04CE7C512F8B085200D8FDD3 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
