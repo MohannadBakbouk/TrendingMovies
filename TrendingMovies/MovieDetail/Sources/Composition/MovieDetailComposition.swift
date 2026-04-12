@@ -1,0 +1,23 @@
+//
+//  MovieDetailComposition.swift
+//  MovieDetail
+//
+//  Created by Mohannad on 12/04/2026.
+//
+
+import SwiftUI
+
+public struct MovieDetailComposition{
+    
+    private init() {}
+    
+    @MainActor
+    public static func makeMovieDetailView(id: Int) -> MovieDetailView {
+        let service = MovieDetailService()
+        let dataSource = RemoteMovieDetailDataSource(service: service)
+        let repository = MovieDetailRepository(dataSource: dataSource)
+        let fetchMovieDetail = FetchMovieDetailUseCase(repository: repository)
+        return MovieDetailView(id: id, fetchMovieDetailUseCase: fetchMovieDetail)
+    }
+}
+

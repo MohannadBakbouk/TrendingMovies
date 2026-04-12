@@ -10,6 +10,7 @@
 		04CE7A442F89D1CC00D8FDD3 /* MovieList in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7A432F89D1CC00D8FDD3 /* MovieList */; };
 		04CE7A462F89D1CF00D8FDD3 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7A452F89D1CF00D8FDD3 /* Core */; };
 		04CE7C522F8B085200D8FDD3 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7C512F8B085200D8FDD3 /* DesignSystem */; };
+		04CE7C932F8BD3AA00D8FDD3 /* MovieDetail in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7C922F8BD3AA00D8FDD3 /* MovieDetail */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 			membershipExceptions = (
 				Core,
 				DesignSystem,
+				MovieDetail,
 				MovieList,
 			);
 			target = 04CE7A222F89C71500D8FDD3 /* TrendingMovies */;
@@ -46,6 +48,7 @@
 			files = (
 				04CE7C522F8B085200D8FDD3 /* DesignSystem in Frameworks */,
 				04CE7A442F89D1CC00D8FDD3 /* MovieList in Frameworks */,
+				04CE7C932F8BD3AA00D8FDD3 /* MovieDetail in Frameworks */,
 				04CE7A462F89D1CF00D8FDD3 /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +103,7 @@
 				04CE7A432F89D1CC00D8FDD3 /* MovieList */,
 				04CE7A452F89D1CF00D8FDD3 /* Core */,
 				04CE7C512F8B085200D8FDD3 /* DesignSystem */,
+				04CE7C922F8BD3AA00D8FDD3 /* MovieDetail */,
 			);
 			productName = TrendingMovies;
 			productReference = 04CE7A232F89C71500D8FDD3 /* TrendingMovies.app */;
@@ -378,6 +382,10 @@
 		04CE7C512F8B085200D8FDD3 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DesignSystem;
+		};
+		04CE7C922F8BD3AA00D8FDD3 /* MovieDetail */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieDetail;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

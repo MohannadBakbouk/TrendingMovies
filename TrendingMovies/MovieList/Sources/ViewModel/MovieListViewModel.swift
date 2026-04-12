@@ -27,7 +27,7 @@ import SwiftUI
         self.genresUseCase = genresUseCase
         self.selectedGenre = -1
     }
-
+    
     func loadGenres() async {
         do {
             genres = try await genresUseCase.execute()
@@ -94,5 +94,10 @@ import SwiftUI
             guard let self else { return }
             self.applyFiltersCriteria()
         }
+    }
+    
+    func cancelPendingWork() {
+       searchDebounceTask?.cancel()
+       searchDebounceTask = nil
     }
 }

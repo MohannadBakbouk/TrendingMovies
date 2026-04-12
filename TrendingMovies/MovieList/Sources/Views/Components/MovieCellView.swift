@@ -15,10 +15,6 @@ struct MovieCellView: View {
     enum Layout {
         static let titleHeight: CGFloat = 50
         static let posterHeight: CGFloat = 200
-        static let failureSymbolPointSize: CGFloat = 40
-        static var posterPlaceholderFill: some View {
-            Color(white: 0.25)
-        }
     }
 
     // MARK: - body
@@ -46,37 +42,10 @@ struct MovieCellView: View {
 
     // MARK: - Poster
     private var posterView: some View {
-        AsyncImage(url: movie.image) { phase in
-            switch phase {
-            case .empty:
-                ZStack {
-                    Layout.posterPlaceholderFill
-                    ProgressView()
-                     .tint(DSColors.white)
-                     .scaleEffect(1.3)
-                }
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-            case .failure:
-                posterFailureContent
-            @unknown default:
-                Layout.posterPlaceholderFill
-            }
-        }
+        DSPosterImageView(url: movie.image)
         .frame(maxWidth: .infinity)
         .frame(height: Layout.posterHeight)
         .clipped()
         .clipShape(RoundedRectangle(cornerRadius: DSCorner.small))
-    }
-
-    private var posterFailureContent: some View {
-        ZStack {
-            Layout.posterPlaceholderFill
-            Image(systemName: DSImage.imagePlaceholder)
-                .font(.system(size: Layout.failureSymbolPointSize))
-                .foregroundStyle(DSColors.secondaryText)
-        }
     }
 }

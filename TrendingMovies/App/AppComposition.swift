@@ -7,11 +7,16 @@
 
 import SwiftUI
 import MovieList
+import MovieDetail
 
 @MainActor
-struct AppDependencies {
+struct AppComposition {
     
     func rootView() -> some View {
         MovieListComposition.makeMovieListView()
+    }
+    
+    func DetailScreen(id: Int) -> some View {
+        MovieDetailComposition.makeMovieDetailView(id: id)
     }
 }

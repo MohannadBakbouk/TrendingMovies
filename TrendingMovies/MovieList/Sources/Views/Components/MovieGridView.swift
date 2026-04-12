@@ -8,9 +8,10 @@
 import SwiftUI
 import DesignSystem
 
-struct MovieGridView: View {
+struct MovieGridView<Destination: View>: View {
     let movies: [Movie]
     let onItemAppear: (Movie) -> Void
+    let destination: (Movie) -> Destination
 
     private let columns = [
         GridItem(.flexible(), spacing: DSSpacing.small),
@@ -20,10 +21,12 @@ struct MovieGridView: View {
     var body: some View {
         LazyVGrid(columns: columns, spacing: 15) {
             ForEach(movies, id: \.uuid) { movie in
-                MovieCellView(movie: movie)
-                    .onAppear {
-                        onItemAppear(movie)
-                    }
+                NavigationLink(destination: destination(movie)) {
+                    MovieCellView(movie: movie)
+                        .onAppear {
+                            onItemAppear(movie)
+                        }
+                }
             }
         }
     }
