@@ -11,10 +11,16 @@ import MovieList
 @main
 struct TrendingMoviesApp: App {
     private let composition = AppComposition()
+    @State var isSplashShown: Bool = true
 
     var body: some Scene {
         WindowGroup {
-            composition.rootView()
+            if isSplashShown {
+                SplashView(isActive: $isSplashShown)
+            }
+            else {
+                composition.rootView()
+            }
         }
     }
 }
