@@ -7,15 +7,17 @@
 
 import SwiftUI
 import DesignSystem
-import MovieDetail
 
-public struct MovieListView: View {
+public struct MovieListView<DetailContent: View>: View {
     @State private var viewModel: MovieListViewModel
+    private let detailDestination: (Movie) -> DetailContent
 
-    init(fetchMoviesUseCase: FetchMoviesUseCaseProtocol, getGenresUseCase: GetGenresUseCaseProtocol) {
-        _viewModel = State(
-            initialValue: MovieListViewModel(moviesUseCase: fetchMoviesUseCase, genresUseCase: getGenresUseCase)
-        )
+    init(
+        viewModel: MovieListViewModel,
+        @ViewBuilder detailDestination: @escaping (Movie) -> DetailContent
+    ) {
+        _viewModel = State(initialValue: viewModel)
+        self.detailDestination = detailDestination
     }
 
     public var body: some View {
@@ -23,6 +25,7 @@ public struct MovieListView: View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
                 DSSearchBar(text: $viewModel.searchQuery)
+                .accessibilityIdentifier("MovieListSearchField")
                 
                 Text("Watch New Movies")
                     .font(DSFonts.title.bold())
@@ -30,23 +33,19 @@ public struct MovieListView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 GenreView(genres: viewModel.genres, selected: $viewModel.selectedGenre)
-                
-                ScrollView {
-                    MovieGridView(movies: viewModel.movies, onItemAppear :{ movie in
-                        viewModel.loadNextPageIfNeeded(for: movie)
-                    } ,destination: { movie in
-                        MovieDetailComposition.makeMovieDetailView(id: movie.id)
-                    })
-                    
-                    if viewModel.isLoadingNextPage {
-                        ProgressView()
-                            .tint(DSColors.primary)
-                            .frame(maxWidth: .infinity)
-                            .padding(DSSpacing.small)
-                    }
-                }
-                .refreshable {
-                    await viewModel.refresh()
+
+                switch viewModel.state {
+                    case .idle, .loading:
+                        DSLoadingView()
+                    case .success:
+                        moviesContentView(viewModel: viewModel)
+                    case .failure(let message):
+                        DSErrorView(message: message) {
+                            Task {
+                                await viewModel.loadGenres()
+                                await viewModel.loadMovies()
+                            }
+                        }
                 }
             }
             .padding()
@@ -64,7 +63,27 @@ public struct MovieListView: View {
             .onDisappear{
                 viewModel.cancelPendingWork()
             }
+            
         }.toolbar(.hidden)
+    }
+
+    private func moviesContentView(viewModel: MovieListViewModel) -> some View {
+        ScrollView {
+            MovieGridView(movies: viewModel.movies, onItemAppear: { movie in
+                viewModel.loadNextPageIfNeeded(for: movie)
+            }, destination: detailDestination)
+
+            if viewModel.isLoadingNextPage {
+                ProgressView()
+                    .tint(DSColors.primary)
+                    .frame(maxWidth: .infinity)
+                    .padding(DSSpacing.small)
+            }
+        }
+        .refreshable {
+            await viewModel.refresh()
+        }
+        .accessibilityIdentifier("MoviesScrollView")
     }
 }
 
@@ -75,14 +94,15 @@ private struct PreviewFetchMoviesUseCase: FetchMoviesUseCaseProtocol {
     }
 }
 
-private struct PreviewGetGenresUseCase: GetGenresUseCaseProtocol {
+private struct PreviewGetGenresUseCase: FetchGenresUseCaseProtocol {
     func execute() async throws -> [Genre] { [] }
 }
 
 #Preview {
     MovieListView(
-        fetchMoviesUseCase: PreviewFetchMoviesUseCase(),
-        getGenresUseCase: PreviewGetGenresUseCase()
-    )
+        viewModel: MovieListViewModel(moviesUseCase: PreviewFetchMoviesUseCase(), genresUseCase: PreviewGetGenresUseCase())
+    ) { movie in
+        Text(verbatim: "Movie \(movie.id)")
+    }
 }
 #endif

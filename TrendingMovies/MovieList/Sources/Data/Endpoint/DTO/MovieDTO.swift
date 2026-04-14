@@ -3,7 +3,7 @@ import Foundation
 import Core
 
 // MARK: - Result
-struct MovieDTO: Codable {
+struct MovieDTO: Codable, Equatable {
     let adult: Bool
     let backdropPath, posterPath: String?
     let genreIDS: [Int]
@@ -43,5 +43,27 @@ extension MovieDTO{
             genreIds: genreIDS
         )
     }
+    
+        static func make(
+            id: Int = 1,
+            title: String = "Movie",
+            overview: String = "Overview",
+            posterPath: String? = "/poster.jpg",
+            releaseDate: String = "2024-01-01",
+            genreIds: [Int] = []
+        ) -> MovieDTO {
+            MovieDTO(adult: false,
+                      backdropPath: posterPath,
+                      posterPath: posterPath,
+                      genreIDS: genreIds,
+                      id: id, originalLanguage: "EN",
+                      originalTitle: title,
+                      overview: overview,
+                      popularity: 5,
+                      releaseDate: releaseDate,
+                      title: title,
+                      video: true,
+                      voteAverage: 10, voteCount: 100)
+        }
 }
 

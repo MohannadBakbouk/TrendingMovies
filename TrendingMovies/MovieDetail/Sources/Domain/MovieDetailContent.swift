@@ -28,9 +28,9 @@ struct MovieDetailContent {
             homepage: details?.homePage.nilIfEmpty ?? "",
             languages: details?.langs.joined(separator: ", ").nilIfEmpty ?? "Unknown",
             status:   details?.status.nilIfEmpty ??  "Unknown",
-            runtime: details != nil ?  "\(details!.runtime) min" : "Unknown",
+            runtime: details.map { "\($0.runtime) min" } ?? "Unknown",
             budget:  details?.budget.nilIfEmpty ?? "Unknown",
-            revenue:  details?.budget.nilIfEmpty ?? "Unknown"
+            revenue:  details?.revenue.nilIfEmpty ?? "Unknown"
         )
     }
 }

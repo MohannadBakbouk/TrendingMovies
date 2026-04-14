@@ -26,7 +26,7 @@ struct MovieGridView<Destination: View>: View {
                         .onAppear {
                             onItemAppear(movie)
                         }
-                }
+                }.accessibilityIdentifier("MovieCell\(movie.id)")
             }
         }
     }

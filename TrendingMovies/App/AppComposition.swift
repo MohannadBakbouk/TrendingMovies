@@ -8,15 +8,23 @@
 import SwiftUI
 import MovieList
 import MovieDetail
+import Core
 
 @MainActor
 struct AppComposition {
-    
     func rootView() -> some View {
-        MovieListComposition.makeMovieListView()
+        if !ProcessInfo.isTesting {
+            MovieListComposition.makeMovieListView()
+        }
+        else {
+            MovieListComposition.makeMovieListView(
+                fetchMoviesUseCase: UITestFetchMoviesUseCase(),
+                fetchGenresUseCase: UITestFetchGenresUseCase()
+            )
+        }
     }
     
-    func DetailScreen(id: Int) -> some View {
+    func detailScreen(id: Int) -> some View {
         MovieDetailComposition.makeMovieDetailView(id: id)
     }
 }

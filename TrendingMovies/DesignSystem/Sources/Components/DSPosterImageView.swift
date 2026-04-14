@@ -29,6 +29,7 @@ public struct DSPosterImageView: View {
             switch phase {
             case .empty:
                 ZStack {
+                    placeholderView
                     ProgressView()
                         .tint(.white)
                         .scaleEffect(Layout.progressViewScale)

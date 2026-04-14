@@ -8,7 +8,7 @@
 import Foundation
 import Core
 
-enum MoviesEndpoint: EndpointProtocol {
+enum MoviesEndpoint: EndpointProtocol, Equatable {
     case genres
     case discover(page: Int, genreId: Int?)
     case searchMovie(query: String, page: Int)

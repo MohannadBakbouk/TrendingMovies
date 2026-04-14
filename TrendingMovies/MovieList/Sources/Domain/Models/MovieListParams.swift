@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieListParams: Equatable, Sendable {
+public struct MovieListParams: Equatable, Sendable {
     var genreId: Int?
     var searchQuery: String?
 

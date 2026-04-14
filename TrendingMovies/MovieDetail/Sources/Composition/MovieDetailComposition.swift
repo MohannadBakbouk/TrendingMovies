@@ -17,7 +17,8 @@ public struct MovieDetailComposition{
         let dataSource = RemoteMovieDetailDataSource(service: service)
         let repository = MovieDetailRepository(dataSource: dataSource)
         let fetchMovieDetail = FetchMovieDetailUseCase(repository: repository)
-        return MovieDetailView(id: id, fetchMovieDetailUseCase: fetchMovieDetail)
+        let viewModel =  MovieDetailViewModel(id: id,fetchMovieDetailUseCase: fetchMovieDetail)
+        return MovieDetailView(viewModel: viewModel)
     }
 }
 

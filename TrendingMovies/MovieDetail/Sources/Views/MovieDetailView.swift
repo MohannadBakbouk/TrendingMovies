@@ -10,16 +10,11 @@ import SwiftUI
 import DesignSystem
 
 public struct MovieDetailView: View {
-    @State var viewModel: MovieDetailViewModel
+    @State private var viewModel: MovieDetailViewModel
     @Environment(\.dismiss)  private var dismiss
 
-    public init(id: Int, fetchMovieDetailUseCase: FetchMovieDetailUseCaseProtocol) {
-        _viewModel = State(
-            initialValue: MovieDetailViewModel(
-                id: id,
-                fetchMovieDetailUseCase: fetchMovieDetailUseCase
-            )
-        )
+    init(viewModel: MovieDetailViewModel) {
+        _viewModel = State(initialValue: viewModel)
     }
     
     private enum Layout {
@@ -32,15 +27,18 @@ public struct MovieDetailView: View {
     }
 
     public var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 0) {
-                headerPoster
-                summarySection
-                overviewSection
-                metadataSection
+        Group {
+            switch viewModel.state {
+            case .idle, .loading:
+                DSLoadingView()
+            case .success:
+                detailContentView
+            case .failure(let message):
+                DSErrorView(message: message) {
+                    Task { await viewModel.loadMovieDetail() }
+                }
             }
         }
-        .scrollIndicators(.hidden)
         .background(DSColors.background)
         .ignoresSafeArea()
         .toolbar(.hidden)
@@ -51,6 +49,18 @@ public struct MovieDetailView: View {
             await viewModel.loadMovieDetail()
         }
        
+    }
+
+    var detailContentView: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                headerPoster
+                summarySection
+                overviewSection
+                metadataSection
+            }
+        }
+        .scrollIndicators(.hidden)
     }
 
     private var headerPoster: some View {
@@ -120,7 +130,7 @@ public struct MovieDetailView: View {
                 Image(systemName: DSImage.backArrow)
                     .foregroundColor(DSColors.primaryText)
                     .padding(DSSpacing.xSmall)
-            }
+            }.accessibilityIdentifier("Details_BackButton")
 
             Spacer()
 

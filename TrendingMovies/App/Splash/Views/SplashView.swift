@@ -19,7 +19,7 @@ struct SplashView: View {
         VStack{
             Spacer()
            
-            Text("Trending Movies App")
+            Text("Trending Movies")
            .font(DSFonts.title)
            .fontWeight(.bold)
            .multilineTextAlignment(.center)

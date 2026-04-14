@@ -6,7 +6,12 @@
 //
 
 // MARK: - Genre
-struct Genre {
+public struct Genre: Equatable, Sendable {
     let id: Int
     let name: String
+    
+    public init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
 }

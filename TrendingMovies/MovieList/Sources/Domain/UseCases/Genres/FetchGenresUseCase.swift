@@ -1,5 +1,5 @@
 //
-//  GetGenresUseCase.swift
+//  FetchGenresUseCase.swift
 //  MovieList
 //
 //  Created by Mohannad on 11/04/2026.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetGenresUseCase: GetGenresUseCaseProtocol {
+struct FetchGenresUseCase: FetchGenresUseCaseProtocol {
     private let repository: MoviesRepositoryProtocol
 
     init(repository: MoviesRepositoryProtocol) {

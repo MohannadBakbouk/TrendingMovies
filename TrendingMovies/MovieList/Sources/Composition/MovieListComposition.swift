@@ -6,17 +6,32 @@
 //
 
 import SwiftUI
+import MovieDetail
 
 public struct MovieListComposition {
     private init() {}
 
     @MainActor
-    public static func makeMovieListView() -> MovieListView {
+    public static func makeMovieListView() -> MovieListView<MovieDetailView> {
         let service = MoviesService()
         let dataSource = RemoteMoviesDataSource(service: service)
         let repository = MoviesRepository(dataSource: dataSource)
         let fetchMovies = FetchMoviesUseCase(repository: repository)
-        let getGenres = GetGenresUseCase(repository: repository)
-        return MovieListView(fetchMoviesUseCase: fetchMovies, getGenresUseCase: getGenres)
+        let fetchGenres = FetchGenresUseCase(repository: repository)
+        let viewModel = MovieListViewModel(moviesUseCase: fetchMovies, genresUseCase: fetchGenres)
+        return MovieListView(viewModel: viewModel) { movie in
+            MovieDetailComposition.makeMovieDetailView(id: movie.id)
+        }
+    }
+    
+    @MainActor
+    public static func makeMovieListView(
+        fetchMoviesUseCase: FetchMoviesUseCaseProtocol,
+        fetchGenresUseCase: FetchGenresUseCaseProtocol
+    ) -> MovieListView<MovieDetailView> {
+        let viewModel = MovieListViewModel(moviesUseCase: fetchMoviesUseCase, genresUseCase: fetchGenresUseCase)
+        return MovieListView(viewModel: viewModel) { movie in
+            MovieDetailComposition.makeMovieDetailView(id: movie.id)
+        }
     }
 }

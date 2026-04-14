@@ -8,7 +8,7 @@
 import Foundation
 
 
-public class NetworkLogger: NetworkLoggerProtocol{
+public struct NetworkLogger: NetworkLoggerProtocol,  Sendable {
     
     public var isLoggingEnabled: Bool
     

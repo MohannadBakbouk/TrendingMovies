@@ -19,7 +19,7 @@ struct GenreView: View {
                     genreChip(for: genre)
                 }
             }
-        }
+        }.accessibilityIdentifier("GenreScrollView")
     }
     
     func genreChip(for genre: Genre) -> some View {
@@ -37,6 +37,8 @@ struct GenreView: View {
                    .background(chipBackground(isSelected: isSelected))
            }
            .buttonStyle(.plain)
+           .accessibilityIdentifier("Genre\(genre.id)")
+
        }
     
     
