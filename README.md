@@ -24,13 +24,13 @@ A modular iOS app that showcases trending movies with a Movie List and Movie Det
 #### Screenshots
 
 <p align="center">
-<img width="200" style="margin-right: 10px;" alt="Image" src="https://github.com/user-attachments/assets/2a0e9b4d-b302-4f07-bd0c-aae39a89ee43" />
+<img width="200" style="margin-right: 10px;" src="https://github.com/user-attachments/assets/09a80a6c-ce0c-4f48-b548-c68c261a1818" />
 
-<img width="200" style="margin-right: 10px;" alt="Image" src="https://github.com/user-attachments/assets/4a9f5d61-cb1c-4b50-9785-2ecc0374282c" />
+<img width="200" style="margin-right: 10px;" alt="Image" src="https://github.com/user-attachments/assets/08e13c4c-e2d5-438b-93d5-bc2f230c1a10"  />
 
-<img width="200" style="margin-right: 10px;" alt="Image" src="https://github.com/user-attachments/assets/82eb4fcf-5966-4da0-9e91-c9319b831a9f" />
+<img width="200" style="margin-right: 10px;" alt="Image" src="https://github.com/user-attachments/assets/b1972ec3-f47e-41d7-975d-018419e2d1ce"  />
 
-<img width="200" style="margin-right: 10px;" alt="Image" src="https://github.com/user-attachments/assets/f430b234-0e6a-4d82-9978-e7b591b73fd9" />
+<img width="200" style="margin-right: 10px;" alt="Image" src="https://github.com/user-attachments/assets/0d1a5f65-9fd5-4eb8-bf7c-cd9a557bd3a4"  />
 </p>
 
 
