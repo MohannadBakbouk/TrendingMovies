@@ -104,9 +104,9 @@ import Core
 
     func searchQueryDidChange() {
         searchDebounceTask?.cancel()
-        searchDebounceTask = Task { [weak self] in
+        searchDebounceTask = Task {[weak self] in
             try? await Task.sleep(for: .milliseconds(500))
-            guard let self else { return }
+            guard !Task.isCancelled, let self else { return }
             self.applyFiltersCriteria()
         }
     }

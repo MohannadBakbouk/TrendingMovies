@@ -11,6 +11,7 @@
 		04CE7A462F89D1CF00D8FDD3 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7A452F89D1CF00D8FDD3 /* Core */; };
 		04CE7C522F8B085200D8FDD3 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7C512F8B085200D8FDD3 /* DesignSystem */; };
 		04CE7C932F8BD3AA00D8FDD3 /* MovieDetail in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7C922F8BD3AA00D8FDD3 /* MovieDetail */; };
+		04CE7D1E2F9003E000D8FDD3 /* MovieDetail in Frameworks */ = {isa = PBXBuildFile; productRef = 04CE7D1D2F9003E000D8FDD3 /* MovieDetail */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CE7D1E2F9003E000D8FDD3 /* MovieDetail in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +154,7 @@
 			);
 			name = TrendingMoviesUITests;
 			packageProductDependencies = (
+				04CE7D1D2F9003E000D8FDD3 /* MovieDetail */,
 			);
 			productName = TrendingMoviesUITests;
 			productReference = 04CE7C9C2F8D395900D8FDD3 /* TrendingMoviesUITests.xctest */;
@@ -506,6 +509,10 @@
 			productName = DesignSystem;
 		};
 		04CE7C922F8BD3AA00D8FDD3 /* MovieDetail */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieDetail;
+		};
+		04CE7D1D2F9003E000D8FDD3 /* MovieDetail */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MovieDetail;
 		};

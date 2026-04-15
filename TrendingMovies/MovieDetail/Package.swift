@@ -30,6 +30,13 @@ let package = Package(
              ]
         ),
         
+            .testTarget(
+                name: "MovieDetailTests",
+                dependencies: [
+                    "MovieDetail"
+                ]
+            )
+        
 
     ]
 )

@@ -10,7 +10,6 @@ import Testing
 @testable import MovieList
 
 @Suite("RemoteMoviesDataSource")
-@MainActor
 struct RemoteMoviesDataSourceTests {
     
     @Test("getMovies forwards params and returns DTO")

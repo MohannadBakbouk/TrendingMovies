@@ -23,17 +23,17 @@ final class SplashUITests: XCTestCase {
     }
 
     func testIsAppNameShown() throws {
-        let appName = app.staticTexts["SlugLabel"]
+        let appName = app.staticTexts[UIIdentifier.Splash.slugLabel]
         XCTAssertTrue(appName.exists, "App title does not exist")
     }
     
     func testIsProgressViewShown() throws {
-        let progressView = app.activityIndicators["ProgressView"]
+        let progressView = app.activityIndicators[UIIdentifier.Splash.progressView]
         XCTAssertTrue(progressView.exists, "ProgressView does not exist")
     }
     
     func testIsSplashNavigationWorking() throws {
-        let appName = app.staticTexts["SlugLabel"]
+        let appName = app.staticTexts[UIIdentifier.Splash.slugLabel]
         XCTAssertTrue(appName.exists, "App didnot show splash")
         sleep(2) // Wait for the transition
         XCTAssertFalse(appName.exists, "SplashView did not disappear after 2 seconds")

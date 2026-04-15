@@ -10,7 +10,6 @@ import Testing
 @testable import MovieList
 
 @Suite("MoviesService")
-@MainActor
 struct MoviesServiceTests {
     
     @Test("fetchGenres uses genres endpoint")

@@ -61,6 +61,7 @@ public struct MovieDetailView: View {
             }
         }
         .scrollIndicators(.hidden)
+        .accessibilityIdentifier("DetailScrollView")
     }
 
     private var headerPoster: some View {
@@ -78,10 +79,12 @@ public struct MovieDetailView: View {
             VStack(alignment: .leading, spacing: DSSpacing.xSmall) {
                 Text(content.title)
                     .font(DSFonts.headline)
+                    .accessibilityIdentifier("MovieDetailTitle")
 
                 Text(content.genresText)
                     .font(DSFonts.callout)
                     .foregroundStyle(.gray)
+                    .accessibilityIdentifier("MovieDetailGenres")
             }
         }
         .padding(DSSpacing.medium)
@@ -95,27 +98,38 @@ public struct MovieDetailView: View {
             .padding(DSSpacing.medium)
             .padding(.bottom, DSSpacing.xxLarge)
             .foregroundStyle(DSColors.primaryText)
+            .accessibilityIdentifier("MovieDetailOverview")
     }
 
     private var metadataSection: some View {
         VStack(alignment: .leading, spacing: DSSpacing.small) {
             MovieInfoItem(title: "Homepage", value: content.homepage, isLink: true)
+           .valueAccessibilityIdentifier("HomepageUrl")
+        
             
             MovieInfoItem(title: "Languages", value: content.languages)
+            .valueAccessibilityIdentifier("MovieDetailLanguages")
+            
 
             HStack(alignment: .top) {
                 MovieInfoItem(title: "Status", value: content.status)
+                    .valueAccessibilityIdentifier("MovieDetailStatus")
                     .frame(maxWidth: .infinity, alignment: .leading)
+                  
 
                 MovieInfoItem(title: "Runtime", value: content.runtime)
+                    .valueAccessibilityIdentifier("MovieDetailRuntime")
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    
             }
 
             HStack(alignment: .top) {
                 MovieInfoItem(title: "Budget", value: content.budget)
+                    .valueAccessibilityIdentifier("MovieDetailBudget")
                     .frame(maxWidth: .infinity, alignment: .leading)
-
+                
                 MovieInfoItem(title: "Revenue", value: content.revenue)
+                    .valueAccessibilityIdentifier("MovieDetailRevenue")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
@@ -130,7 +144,7 @@ public struct MovieDetailView: View {
                 Image(systemName: DSImage.backArrow)
                     .foregroundColor(DSColors.primaryText)
                     .padding(DSSpacing.xSmall)
-            }.accessibilityIdentifier("Details_BackButton")
+            }.accessibilityIdentifier("DetailBackButton")
 
             Spacer()
 
@@ -140,7 +154,7 @@ public struct MovieDetailView: View {
                 Image(systemName: DSImage.share)
                     .foregroundColor(DSColors.primaryText)
                     .padding(DSSpacing.xSmall)
-            }
+            }.accessibilityIdentifier("DetailShareButton")
         }
         .padding(DSSpacing.xSmall)
         .background(DSColors.background.opacity(0.3))

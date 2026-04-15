@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Core
 import MovieList
+
 
 struct UITestFetchGenresUseCase: FetchGenresUseCaseProtocol {
     func execute() async throws -> [Genre] {

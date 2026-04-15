@@ -8,7 +8,7 @@
 import Foundation
 import Core
 
-enum MovieDetailEndpoint: EndpointProtocol{
+enum MovieDetailEndpoint: EndpointProtocol, Equatable{
     case movieDetail(id: Int)
     
     var path: String{

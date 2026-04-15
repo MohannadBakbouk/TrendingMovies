@@ -10,7 +10,6 @@ import Testing
 @testable import MovieList
 
 @Suite("MoviesRepository")
-@MainActor
 struct MoviesRepositoryTests {
     @Test("getMovies maps DTO response to domain page")
     func getMoviesMapsToDomain() async throws {

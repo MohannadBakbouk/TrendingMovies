@@ -19,7 +19,8 @@ struct AppComposition {
         else {
             MovieListComposition.makeMovieListView(
                 fetchMoviesUseCase: UITestFetchMoviesUseCase(),
-                fetchGenresUseCase: UITestFetchGenresUseCase()
+                fetchGenresUseCase: UITestFetchGenresUseCase(),
+                fetchMovieDetailUseCase: UITestFetchMovieDetailUseCase()
             )
         }
     }

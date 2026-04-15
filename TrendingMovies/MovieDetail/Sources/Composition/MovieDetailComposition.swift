@@ -20,5 +20,11 @@ public struct MovieDetailComposition{
         let viewModel =  MovieDetailViewModel(id: id,fetchMovieDetailUseCase: fetchMovieDetail)
         return MovieDetailView(viewModel: viewModel)
     }
+    
+    @MainActor
+    public static func makeMovieDetailView(id: Int, useCase: FetchMovieDetailUseCaseProtocol) -> MovieDetailView{
+        let viewModel = MovieDetailViewModel(id: id, fetchMovieDetailUseCase: useCase)
+        return MovieDetailView(viewModel: viewModel)
+    }
 }
 

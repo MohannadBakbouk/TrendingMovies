@@ -27,11 +27,12 @@ public struct MovieListComposition {
     @MainActor
     public static func makeMovieListView(
         fetchMoviesUseCase: FetchMoviesUseCaseProtocol,
-        fetchGenresUseCase: FetchGenresUseCaseProtocol
+        fetchGenresUseCase: FetchGenresUseCaseProtocol,
+        fetchMovieDetailUseCase: FetchMovieDetailUseCaseProtocol
     ) -> MovieListView<MovieDetailView> {
         let viewModel = MovieListViewModel(moviesUseCase: fetchMoviesUseCase, genresUseCase: fetchGenresUseCase)
         return MovieListView(viewModel: viewModel) { movie in
-            MovieDetailComposition.makeMovieDetailView(id: movie.id)
+            MovieDetailComposition.makeMovieDetailView(id: movie.id, useCase: fetchMovieDetailUseCase)
         }
     }
 }

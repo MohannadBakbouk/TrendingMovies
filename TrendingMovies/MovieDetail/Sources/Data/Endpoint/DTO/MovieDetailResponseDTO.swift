@@ -9,7 +9,7 @@ import Foundation
 import Core
 
 // MARK: - MovieDetails
-struct MovieDetailResponseDTO: Codable {
+public struct MovieDetailResponseDTO: Codable, Sendable{
     let adult: Bool
     let backdropPath: String
     let belongsToCollection: BelongsToCollectionDTO?
@@ -120,3 +120,4 @@ extension MovieDetailResponseDTO {
                     langs: spokenLanguages.map{$0.englishName})
     }
 }
+

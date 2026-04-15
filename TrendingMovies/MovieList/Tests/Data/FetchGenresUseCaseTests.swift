@@ -9,7 +9,6 @@ import Testing
 @testable import MovieList
 
 @Suite("FetchGenresUseCase")
-@MainActor
 struct FetchGenreUseCaseTests {
     
     @Test("execute usecase and returns repository result")
