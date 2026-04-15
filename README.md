@@ -6,9 +6,9 @@ A modular iOS app that showcases trending movies with a Movie List and Movie Det
 # Main Features
 
 - Built using SwiftUI with MVVM architecture
+- Modularized into multiple modules for better scalability, separation of concerns, and maintainability 🧱
 - High-quality, well-structured code following Design Patterns and SOLID principles ✨
 - Applied 📐 OOP, 🔄 POP, and 🧬 inheritance concepts effectively
-- Modularized into multiple modules for better scalability, separation of concerns, and maintainability 🧱
 - Decoupled and ✅ testable architecture
 - Leveraged ⚡️ modern concurrency using async/await and Task
 - Designed a 🌐 decoupled and testable networking layer using URLSession
@@ -16,8 +16,8 @@ A modular iOS app that showcases trending movies with a Movie List and Movie Det
 - Utilized 🔑 higher-order functions such as map and compactMap
 - Created reusable utilities via 🔧 Swift extensions
 - Avoided 🎩 magic values and ❌ hardcoded strings
-- Implemented 🧪 unit tests for MovieList business logic
-- Added 📱 UI tests to validate MovieList user flows
+- Implemented 🧪 unit tests for MovieList & MovieDetail business logic
+- Added 📱 UI tests to validate MovieList & MovieDetail user flows
 - Used 🧩 mocked network services for reliable and isolated testing
 
 
