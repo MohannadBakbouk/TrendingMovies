@@ -8,6 +8,7 @@ let package = Package(
     platforms: [
        .iOS(.v18)
     ],
+    
     products: [
         .library(
             name: "Core",
@@ -16,7 +17,10 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Core"
+            name: "Core",
+            resources: [
+                  .process("Persistence/TrendingMoviesModel.xcdatamodeld")
+              ],
         ),
     ]
 )

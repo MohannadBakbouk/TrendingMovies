@@ -15,7 +15,8 @@ struct MovieDetailRepositoryTests {
     func getMovieDetailMapsToDomain() async throws {
         let expected = Samples.movieDetail1
         let dataSource = RemoteMovieDetailDataSourceMock(result: .success(expected))
-        let repository = MovieDetailRepository(dataSource: dataSource)
+        let localDataSource = LocalMovieDetailDataSourceMock()
+        let repository = MovieDetailRepository(remoteSource: dataSource, localSource: localDataSource)
         let result = try await repository.getMovieDetail(id: 1)
         #expect(result.id == expected.id)
         #expect(result.title == expected.title)
@@ -27,7 +28,8 @@ struct MovieDetailRepositoryTests {
     func getMovieDetailThrowsError() async throws {
         let expected = MockError.someError
         let dataSource = RemoteMovieDetailDataSourceMock(result: .failure(expected))
-        let repository = MovieDetailRepository(dataSource: dataSource)
+        let localDataSource = LocalMovieDetailDataSourceMock()
+        let repository = MovieDetailRepository(remoteSource: dataSource, localSource: localDataSource)
         await #expect(throws: expected) {
             try await repository.getMovieDetail(id: 1)
         }

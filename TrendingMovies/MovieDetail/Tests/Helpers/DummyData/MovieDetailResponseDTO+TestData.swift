@@ -25,7 +25,7 @@ extension MovieDetailResponseDTO {
         MovieDetailResponseDTO(
             adult: false,
             backdropPath: "",
-            belongsToCollection: nil,
+            posterPath: posterPath, belongsToCollection: nil,
             budget: budget,
             genres: genres.map { GenreDTO(id: 0, name: $0) },
             homepage: homepage,
@@ -35,7 +35,6 @@ extension MovieDetailResponseDTO {
             originalTitle: title,
             overview: overview,
             popularity: 0,
-            posterPath: posterPath,
             productionCompanies: [],
             productionCountries: [],
             releaseDate: "",

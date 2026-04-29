@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MovieDetail
+import Core
 
 public struct MovieListComposition {
     private init() {}
@@ -15,7 +16,7 @@ public struct MovieListComposition {
     public static func makeMovieListView() -> MovieListView<MovieDetailView> {
         let service = MoviesService()
         let dataSource = RemoteMoviesDataSource(service: service)
-        let repository = MoviesRepository(dataSource: dataSource)
+        let repository = MoviesRepository(remoteSource: dataSource, localSource: LocalMoviesDataSource(persistence: CoreDataStack.shared))
         let fetchMovies = FetchMoviesUseCase(repository: repository)
         let fetchGenres = FetchGenresUseCase(repository: repository)
         let viewModel = MovieListViewModel(moviesUseCase: fetchMovies, genresUseCase: fetchGenres)

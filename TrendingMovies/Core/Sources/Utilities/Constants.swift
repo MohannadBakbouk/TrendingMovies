@@ -6,4 +6,8 @@ public enum Constants {
     public static let imagesUrl = "https://image.tmdb.org/t/p/w500"
     public static let key = "5a68758d4762171d54cf110856920623"
     public static let format = "json"
+    
+    enum Caching {
+        static let modelName = "TrendingMoviesModel"
+    }
 }

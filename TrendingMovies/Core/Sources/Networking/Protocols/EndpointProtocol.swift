@@ -26,6 +26,7 @@ public extension  EndpointProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.addValue(Constants.content, forHTTPHeaderField: "Content-Type")
+        request.cachePolicy = .reloadIgnoringLocalCacheData
         return request
     }
 }

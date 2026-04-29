@@ -11,7 +11,7 @@ import Core
 // MARK: - MovieDetails
 public struct MovieDetailResponseDTO: Codable, Sendable{
     let adult: Bool
-    let backdropPath: String
+    let backdropPath, posterPath: String
     let belongsToCollection: BelongsToCollectionDTO?
     let budget: Int
     let genres: [GenreDTO]
@@ -19,7 +19,6 @@ public struct MovieDetailResponseDTO: Codable, Sendable{
     let id: Int
     let imdbID, originalLanguage, originalTitle, overview: String
     let popularity: Double
-    let posterPath: String
     let productionCompanies: [ProductionCompanyDTO]
     let productionCountries: [ProductionCountryDTO]
     let releaseDate: String
@@ -54,7 +53,8 @@ public struct MovieDetailResponseDTO: Codable, Sendable{
 // MARK: - BelongsToCollection
 struct BelongsToCollectionDTO: Codable {
     let id: Int
-    let name, posterPath, backdropPath: String
+    let name: String
+    let posterPath, backdropPath: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name

@@ -5,57 +5,65 @@
 //  Created by Mohannad on 13/04/2026.
 //
 
-
 import SwiftUI
+import Kingfisher
 
 public struct DSPosterImageView: View {
     let url: URL?
-    
+
+    @State private var isLoading = true
+    @State private var didFail = false
+
     public init(url: URL?) {
         self.url = url
     }
 
-    // MARK: - Layout
     enum Layout {
         static let failureSymbolPointSize: CGFloat = 40
         static let progressViewScale: CGFloat = 1.2
     }
 
-
-    // MARK: - Body
-    
     public var body: some View {
-        AsyncImage(url: url) { phase in
-            switch phase {
-            case .empty:
-                ZStack {
-                    placeholderView
+        GeometryReader { proxy in
+            ZStack {
+                placeholderView
+                
+                KFImage(url)
+                    .onSuccess { _ in
+                        isLoading = false
+                        didFail = false
+                    }
+                    .onFailure { _ in
+                        isLoading = false
+                        didFail = true
+                    }
+                    .retry(maxCount: 3, interval: .seconds(2))
+                    .resizable()
+                    .scaledToFill()
+                
+                if isLoading {
                     ProgressView()
                         .tint(.white)
                         .scaleEffect(Layout.progressViewScale)
                 }
-
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-
-            case .failure:
-                ZStack {
-                    placeholderView
-                    Image(systemName: DSImage.imagePlaceholder)
-                        .font(.system(size: Layout.failureSymbolPointSize))
-                        .foregroundStyle(DSColors.secondaryText)
+                
+                if didFail {
+                    failureView
                 }
-
-            @unknown default:
-                placeholderView
             }
+            .frame(width: proxy.size.width,
+                   height: proxy.size.height)
+            .clipped()
         }
-        .frame(maxWidth: .infinity)
     }
-    
-    var placeholderView: some View {
+
+    private var failureView: some View {
+        Image(systemName: DSImage.imagePlaceholder)
+            .font(.system(size: Layout.failureSymbolPointSize))
+            .foregroundStyle(DSColors.secondaryText)
+    }
+
+    private var placeholderView: some View {
         DSColors.placeholderFill
     }
 }

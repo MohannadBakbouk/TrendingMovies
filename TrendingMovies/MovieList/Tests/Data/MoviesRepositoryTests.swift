@@ -30,8 +30,9 @@ struct MoviesRepositoryTests {
                 ]
             )
         )
-
-        let repository = MoviesRepository(dataSource: dataSource)
+        
+        let localDataSourceMock = LocalMoviesDataSourceMock()
+        let repository = MoviesRepository(remoteSource: dataSource, localSource: localDataSourceMock)
         let result = try await repository.getMovies(page: 1, criteria: nil)
         #expect(result.page == 1)
         #expect(result.totalPages == 3)
@@ -45,8 +46,9 @@ struct MoviesRepositoryTests {
     @Test("getGenres maps DTO response to domain genres")
     func getGenresMapsToDomain() async throws {
         var dataSource = RemoteMoviesDataSourceMock()
+        let localDataSourceMock = LocalMoviesDataSourceMock()
         dataSource.genresResult = .success(GenreResponseDTO.make(items: Samples.genres))
-        let repository = MoviesRepository(dataSource: dataSource)
+        let repository = MoviesRepository(remoteSource: dataSource, localSource: localDataSourceMock)
         let result = try await repository.getGenres()
         #expect(result.count == 2)
         #expect(result[0].id == 28)
